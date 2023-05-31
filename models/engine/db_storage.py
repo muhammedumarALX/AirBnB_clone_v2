@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Creating new engine DBsttorage"""
 from models.base_model import Base
-from sqlalchemy.orm import sessionmaker, scope_session
+from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
 import os
 
@@ -45,7 +45,7 @@ class DBStorage:
 
     def delete(self, obj=None):
         """delete from the current database session"""
-        if obj not None:
+        if obj is not None:
             self.__session.delete(obj)
 
     def reload(self):
