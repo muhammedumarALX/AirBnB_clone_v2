@@ -14,5 +14,5 @@ class City(BaseModel, Base):
         name (sqlalchemy.String): The name of the city
     """
     __tablename__ = "cities"
-    state_id = Column(String(60), nullable=False, ForeignKey(state.id))
+    state_id = state_id = Column(String(60), ForeignKey("states.id"), nullable=False)
     name = Column(String(128), nullable=False)

@@ -26,7 +26,9 @@ class DBStorage:
         """method that queries a datadbase and returns a dictionary"""
         results = {}
         if cls == None:
-            objects = self.__session.query(User, State, City, Amenity, Place, Review).all()
+            from models.state import State
+            from models.city import City
+            objects = self.__session.query(State, City).all()
         else:
             objects = self.__session.query(cls).all()
 
