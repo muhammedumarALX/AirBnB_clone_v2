@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """Creating new engine DBsttorage"""
-from models.base_model import Base
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
 import os
+from models.base_model import Base
+
 
 
 class DBStorage:
@@ -28,7 +29,8 @@ class DBStorage:
         if cls == None:
             from models.state import State
             from models.city import City
-            objects = self.__session.query(State, City).all()
+            objects = self.__session.query(State).all()
+            objects.extend(self.__session.query(City).all())
         else:
             objects = self.__session.query(cls).all()
 
