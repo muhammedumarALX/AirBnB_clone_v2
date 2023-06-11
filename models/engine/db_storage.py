@@ -31,10 +31,12 @@ class DBStorage:
             from models.city import City
             from models.user import User
             from models.place import Place
+            from models.review import Review
             objects = self.__session.query(State).all()
             objects.extend(self.__session.query(City).all())
             objects.extend(self.__session.query(User).all())
             objects.extend(self.__session.query(Place).all())
+            objects.extend(self.__session.query(Review).all())
         else:
             objects = self.__session.query(cls).all()
 
